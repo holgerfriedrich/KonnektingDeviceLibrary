@@ -272,7 +272,11 @@ inline void KnxDevice::SetDebugString(String *strPtr) {_debugStrPtr = strPtr;}
 #endif
 
 
-inline void KnxDevice::DebugInfo(const char comment[]) const
+inline void KnxDevice::DebugInfo(const char
+#if defined(KNXDEVICE_DEBUG_INFO)
+	       comment
+#endif
+	       []) const
 {
 #if defined(KNXDEVICE_DEBUG_INFO)
 	if (_debugStrPtr != NULL) *_debugStrPtr += String(_debugInfoText) + String(comment);
