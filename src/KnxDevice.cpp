@@ -89,7 +89,7 @@ e_KnxDeviceStatus KnxDevice::begin(HardwareSerial& serial, word physicalAddr) {
     _state = IDLE;
     DEBUG_PRINTLN(F("Init successful"));
     _lastInitTimeMillis = millis();
-    _lastTXTimeMicros = _lastTXTimeMicros = micros();
+    _lastTXTimeMicros = _lastRXTimeMicros = micros();
 #if defined(KNXDEVICE_DEBUG_INFO)
     _nbOfInits = 0;
 #endif
@@ -563,7 +563,7 @@ template <typename T> e_KnxDeviceStatus ConvertFromDpt(const byte dptOriginValue
             return KNX_DEVICE_NOT_IMPLEMENTED;
             break;
 
-        default: KNX_DEVICE_ERROR;
+        default: return KNX_DEVICE_ERROR;
     }
 }
 
@@ -633,7 +633,7 @@ template <typename T> e_KnxDeviceStatus ConvertToDpt(T originValue, byte dptDest
             return KNX_DEVICE_NOT_IMPLEMENTED;
             break;
 
-        default: KNX_DEVICE_ERROR;
+        default: return KNX_DEVICE_ERROR;
     }
 }
 
