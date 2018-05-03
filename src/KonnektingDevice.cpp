@@ -514,7 +514,8 @@ void KonnektingDevice::handleMsgWriteProgrammingMode(byte msg[]) {
     }
 }
 
-void KonnektingDevice::handleMsgReadProgrammingMode(byte []) {
+void KonnektingDevice::handleMsgReadProgrammingMode(byte /*msg*/[]) {
+    // to suppress compiler warning about unused variable, "msg" has been commented out
     DEBUG_PRINTLN(F("handleMsgReadProgrammingMode"));
     if (_progState) {
         byte response[14];
@@ -554,7 +555,8 @@ void KonnektingDevice::handleMsgWriteIndividualAddress(byte msg[]) {
     sendAck(0x00, 0x00);
 }
 
-void KonnektingDevice::handleMsgReadIndividualAddress(byte []) {
+void KonnektingDevice::handleMsgReadIndividualAddress(byte /*msg*/[]) {
+    // to suppress compiler warning about unused variable, "msg" has been commented out
     DEBUG_PRINTLN(F("handleMsgReadIndividualAddress"));
     byte response[14];
     response[0] = PROTOCOLVERSION;

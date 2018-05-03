@@ -89,7 +89,8 @@ e_KnxDeviceStatus KnxDevice::begin(HardwareSerial& serial, word physicalAddr) {
     _state = IDLE;
     DEBUG_PRINTLN(F("Init successful"));
     _lastInitTimeMillis = millis();
-    _lastTXTimeMicros = _lastRXTimeMicros = micros();
+    _lastRXTimeMicros = micros();
+    _lastTXTimeMicros = _lastRXTimeMicros;
 #if defined(KNXDEVICE_DEBUG_INFO)
     _nbOfInits = 0;
 #endif
@@ -501,7 +502,7 @@ void KnxDevice::GetTpUartEvents(e_KnxTpUartEvent event) {
 // Static TxTelegramAck() function called by the KnxTpUart layer (callback)
 
 void KnxDevice::TxTelegramAck(e_TpUartTxAck 
-#ifdef KNXDevice_DEBUG
+#ifdef KNXDevice_DEBUG // ifdef to suppress compiler warning about unused variable when not in debug mode
 		value
 #endif // KNXDevice_DEBUG
 		) {

@@ -273,7 +273,7 @@ inline void KnxDevice::SetDebugString(String *strPtr) {_debugStrPtr = strPtr;}
 
 
 inline void KnxDevice::DebugInfo(const char
-#if defined(KNXDEVICE_DEBUG_INFO)
+#if defined(KNXDEVICE_DEBUG_INFO) // ifdef to suppress compiler warning about unused variable when not in debug mode
 	       comment
 #endif
 	       []) const

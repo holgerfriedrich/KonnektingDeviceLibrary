@@ -321,7 +321,7 @@ inline boolean KnxTpUart::IsActive(void) const
 
 
 inline void KnxTpUart::SetDebugString(String *
-#if defined(KNXTPUART_DEBUG_INFO) || defined(KNXTPUART_DEBUG_ERROR)
+#if defined(KNXTPUART_DEBUG_INFO) || defined(KNXTPUART_DEBUG_ERROR) // ifdef to suppress compiler warning about unused variable when not in debug mode
 		strPtr
 #endif
 		)
@@ -333,7 +333,7 @@ inline void KnxTpUart::SetDebugString(String *
 
 
 inline void KnxTpUart::DebugInfo(const char 
-#if defined(KNXTPUART_DEBUG_INFO)
+#if defined(KNXTPUART_DEBUG_INFO) // ifdef to suppress compiler warning about unused variable when not in debug mode
 		comment
 #endif
 		[]) const
@@ -345,7 +345,7 @@ inline void KnxTpUart::DebugInfo(const char
 
 
 inline void KnxTpUart::DebugError(const char 
-#if defined(KNXTPUART_DEBUG_ERROR)
+#if defined(KNXTPUART_DEBUG_ERROR) // ifdef to suppress compiler warning about unused variable when not in debug mode
 		comment
 #endif
 		[]) const
